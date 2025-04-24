@@ -62,7 +62,7 @@
       left: 18px;
     }
 
-    
+
   }
 
   &__input {
@@ -118,5 +118,79 @@
     &--active {
       opacity: 1;
     }
+  }
+
+  &__item-shop {
+    position: relative;
+    cursor: pointer;
+    margin-right: 5px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 14px;
+      right: -16px;
+      top: 1px;
+      background-image: url('../../../assets/images/icons/arrayBtnRight-icon.svg');
+      transform: rotate(90deg);
+      transition: top 0.3s;
+    }
+
+    &--popup {
+      position: absolute;
+      border: 1px solid #000;
+      border-radius: 10px;
+      background-color: #fff;
+      padding: 5px;
+      left: -5px;
+      color: #000;
+      opacity: 0;
+      z-index: -1;
+      box-shadow: 0 0 3px 1px #000;
+      transition: opacity 0.3s, z-index 0.5s;
+    }
+
+    @media (hover:hover) {
+      &:hover &--popup {
+        opacity: 1;
+        z-index: 10;
+      }
+
+      &:hover {
+        &::after {
+          top: 3px;
+        }
+      }
+    }
+
+    & h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    & ul {
+      width: 150px;
+    }
+
+    & li {
+      margin-bottom: 5px;
+      font-size: 17px;
+      font-weight: 800;
+    }
+  }
+}
+
+.popup-item {
+  border-radius: 10px;
+  transition: box-shadow 0.3s;
+  @media (hover:hover) {
+    &:hover {
+      box-shadow: 0 0 3px 1px #000;
+    }
+  }
+
+  &:active {
+    box-shadow: 0 0 20px 1px #000;
   }
 }

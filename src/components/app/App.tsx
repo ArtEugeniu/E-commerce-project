@@ -4,13 +4,14 @@ import ProductPage from "../../pages/productPage/ProductPage";
 import CategoryPage from "../../pages/categoryPage/CategoryPage";
 import CartPage from "../../pages/cartPage/CartPage";
 import { SortProvider } from "../../context/sortContext";
-
+import ScrollToTop from "../scrollToTop/ScrollToTop";
 
 function App() {
 
 
   return (
     <SortProvider>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="category/:id" element={<ProductPage />} />

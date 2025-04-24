@@ -12,7 +12,7 @@ const Nav: React.FC<INavProps> = ({ onSubscribeClick }) => {
   const cartLength = useAppSelector(store => store.cart.length)
   const navItems = [
     {
-      title: 'Categorys',
+      title: 'All Categorys',
       path: '/category'
     },
     {
@@ -20,6 +20,13 @@ const Nav: React.FC<INavProps> = ({ onSubscribeClick }) => {
       path: '/cart'
     },
   ];
+
+  const shopList = [
+    {title: 'Women', path: '/category?category=Women'},
+    {title: 'Men', path: '/category?category=Men'},
+    {title: 'Women Gym', path: '/category?category=Women Gym'},
+    {title: 'Men Gym', path: '/category?category=Men Gym'}
+  ]
 
   return (
     <nav className="header__nav">
@@ -29,7 +36,21 @@ const Nav: React.FC<INavProps> = ({ onSubscribeClick }) => {
         </Link>
       </div>
       <ul className="header__list">
-        <li className="header__item" key="shop">Shop</li>
+        <li className="header__item-shop" key="shop">
+          Shop
+          <div className="header__item-shop--popup">
+            <h3>Categorys</h3>
+            <ul>
+              {shopList.map((item, index) => {
+                return (
+                  <li className="popup-item" key={item.title + index}>
+                    <Link style={{display: 'block', width: '100%', padding: '6px'}} to={item.path}>{item.title}</Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </li>
         {navItems.map((item, index) => <li key={item.title + index} className="header__item"><Link to={item.path}>{item.title}</Link></li>)}
         <li className="header__item" onClick={onSubscribeClick} key='subscribe'>Subscribe Now</li>
       </ul>
