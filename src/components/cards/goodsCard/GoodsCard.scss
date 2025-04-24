@@ -1,0 +1,59 @@
+.goodsCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 275px;
+  min-height: 480px;
+  row-gap: 5px;
+  transition: opacity 0.3s;
+
+  &__image {
+    width: 275px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    @media (hover:hover) {
+      &:hover {
+        scale: 1.05
+      }
+    }
+    
+    & img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+  }
+
+  &__title {
+    font-family: 'Satoshi';
+    font-size: 18px;
+    font-weight: bold;
+    text-align: start;
+    flex-grow: 1;
+    cursor: pointer;
+    transition: 0.3s;
+
+    @media (hover:hover) {
+      &:hover {
+        text-shadow:  0 0 5px rgba(0, 0, 0, 0.247);
+      }
+    }
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    column-gap: 5px;
+  }
+
+  &__price {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+}

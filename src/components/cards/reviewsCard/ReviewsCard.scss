@@ -1,0 +1,44 @@
+.reviewsCard {
+  max-width: 540px;
+  width: 100%;
+  min-height: 250px;
+  padding: 28px;
+  border: 1px solid #00000044;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    text-align: start;
+    font-family: 'Satoshi';
+    font-weight: 700;
+    font-size: 20px;
+    margin: 15px 0 12px 0;
+    position: relative;
+    width: fit-content;
+    word-break: break-all;
+
+    &::after {
+      content: '';
+      position: absolute;
+      background-image: url('../../../assets/images/icons/checked-icon.svg');
+      width: 24px;
+      height: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      right: -27px;
+    }
+  }
+
+  &__text {
+    margin-bottom: 24px;
+    flex-grow: 1;
+    word-break: break-all;
+  }
+
+  &__text,
+  &__date {
+    color: #000000c9;
+    font-size: 16px;
+  }
+}

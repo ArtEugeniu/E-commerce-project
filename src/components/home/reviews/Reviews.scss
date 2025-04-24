@@ -1,0 +1,54 @@
+.reviews {
+padding-bottom: 1px !important;
+  &::after {
+    content: none !important;
+
+  }
+}
+
+.swiper-container {
+  position: relative;
+  height: 20px;
+  display: flex;
+  justify-content: end;
+  padding-right: 25px;
+  margin-bottom: 25px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: relative !important;
+  inset: unset !important;
+  height: 20px !important;
+  width: 20px !important;
+  margin-top: unset !important;
+
+
+  &::after {
+    content: '' !important;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    padding: 3px;
+  }
+}
+
+.swiper-button-prev {
+  margin-right: 25px;
+
+  &::after {
+    background-image: url('../../../assets/images/icons/leftArrow-icon.svg');
+  }
+}
+
+.swiper-button-next {
+  &::after {
+    background-image: url('../../../assets/images/icons/leftArrow-icon.svg');
+    rotate: 180deg;
+    right: -62px;
+  }
+}

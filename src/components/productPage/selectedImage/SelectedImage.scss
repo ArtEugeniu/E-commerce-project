@@ -1,0 +1,8 @@
+.selected-image {
+  margin-right: 40px;
+  & img {
+    border-radius: 20px;
+    max-width: 444px;
+    height: 530px;
+  }
+}

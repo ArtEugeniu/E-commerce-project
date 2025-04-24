@@ -1,0 +1,24 @@
+.breadCrumbs {
+  margin-bottom: 36px;
+
+  &__list {
+    display: flex;
+    gap: 15px;
+
+    & li {
+      font-size: 13px;
+    }
+
+    & li:not(:last-child) {
+      position: relative;
+      color: #000000a1;
+
+      &::after {
+        content: '>';
+        position: absolute;
+        right: -12px;
+
+      }
+    }
+  }
+}

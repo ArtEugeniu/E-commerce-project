@@ -1,0 +1,49 @@
+.filteredProducts {
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 20px;
+    row-gap: 40px;
+    margin-bottom: 25px;
+  }
+
+  &__button {
+    text-align: center;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    & a {
+      text-align: center;
+      display: block;
+      border: 1px solid black;
+      padding: 10px;
+      border-radius: 10px;
+      min-width: 40px;
+      cursor: pointer;
+      transition: color 0.3s, background-color 0.3s, box-shadow 0.3s, opacity 0.3s;
+
+      @media (hover: hover) {
+        &:hover {
+          box-shadow: 0 0 3px 1px #000;
+        }
+      }
+
+      &:active {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .active {
+    background-color: #000;
+    color: #fff;
+    border-radius: 10px;
+    transition: color 0.3s, background-color 0.3s;
+  }
+}

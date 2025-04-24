@@ -1,0 +1,23 @@
+.testimonials {
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    &-title {
+      font-family: 'Satoshi';
+      font-size: 24px;
+
+      & span {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__top-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}

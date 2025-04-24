@@ -1,0 +1,93 @@
+@use './fonts' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: #111;
+  background-color: #fff;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+
+  &.popup-open {
+    overflow-y: hidden;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+input,
+textarea {
+  outline: none;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Integral', sans-serif;
+  margin: 0;
+  text-align: center;
+}
+
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 60px 0;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    max-width: 1200px;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    background-color: #1111116b;
+  }
+}
+
+.section-title {
+  font-size: 48px;
+  margin-bottom: 55px;
+}

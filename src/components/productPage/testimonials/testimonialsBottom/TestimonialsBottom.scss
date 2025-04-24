@@ -1,0 +1,14 @@
+.testimonials__bottom {
+
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  &-button {
+    text-align: center;
+  }
+}

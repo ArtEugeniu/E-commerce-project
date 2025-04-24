@@ -1,0 +1,16 @@
+.productsTop {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  &__title {
+    font-size: 28px;
+    line-height: 48px;
+  }
+  
+  &__inner {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+}

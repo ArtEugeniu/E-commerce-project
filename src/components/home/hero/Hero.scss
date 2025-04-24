@@ -1,0 +1,93 @@
+.hero {
+  background-color: #f0f0f0;
+  height: calc(100vh - 122px);
+  margin-bottom: 16px;
+
+  &__inner {
+    display: flex;
+    height: 707px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 545px;
+    row-gap: 32px;
+  }
+
+  &__title {
+    font-size: 64px;
+    text-align: start;
+  }
+
+  &__text {
+    color: #0000009c;
+  }
+
+  &__stats {
+    display: flex;
+    margin-top: 16px;
+  }
+
+  &__stats-item {
+
+    &:not(:last-child) {
+      margin-right: 40px;
+      position: relative;
+
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 2px;
+        background-color: #00000054;
+        right: -20px;
+        top: 0;
+      }
+    }
+
+    &:first-child{
+      &::after {
+        right: -13px;
+      }
+    }
+  }
+
+  &__stats-item div {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  &__stats-item p {
+    font-size: 16px;
+    color: #000000a2;
+    width: 156px;
+  }
+
+  &__image {
+    height: 100%;
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+  }
+
+  &__image img {
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: -115px;
+  }
+
+  &__footer {
+    background-color: #000;
+    padding: 24px 0 23px;
+  }
+
+  &__brand-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}

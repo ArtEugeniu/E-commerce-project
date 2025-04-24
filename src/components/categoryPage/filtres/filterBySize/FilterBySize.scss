@@ -1,0 +1,66 @@
+.sizeFilter {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #0000005d;
+    bottom: 0;
+  }
+
+  &__title {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+
+  &__button {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    text-align: start;
+    border-radius: 10px;
+    padding: 6px;
+    position: relative;
+    transition: box-shadow 0.3s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      background-image: url('../../../../assets/images/icons/arrayBtnRight-icon.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 16px;
+      height: 16px;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: right 0.3s;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        box-shadow: 0 0 3px 1px #000;
+      }
+    }
+  }
+
+  .active {
+    box-shadow: 0 0 3px 1px #000;
+
+    &::after {
+      right: 0;
+    }
+  }
+
+}

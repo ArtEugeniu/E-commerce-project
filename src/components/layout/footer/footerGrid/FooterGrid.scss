@@ -1,0 +1,30 @@
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 105px;
+
+  & h4 {
+    text-align: start;
+    font-family: 'Satoshi';
+    margin-bottom: 24px;
+    font-size: 18px;
+  }
+
+  & li:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  & a {
+    transition: opacity 0.3s, text-shadow 0.3s;
+  }
+
+  @media (hover: hover) {
+    & a:hover {
+      text-shadow: 0 0 3px #000;
+    }
+  }
+
+  & a:active {
+    opacity: 0.7;
+  }
+}

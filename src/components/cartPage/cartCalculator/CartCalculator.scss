@@ -1,0 +1,76 @@
+.cartCalculator {
+  padding: 20px 24px 30px;
+  border: 1px solid #00000038;
+  border-radius: 20px;
+  max-height: 458px;
+  position: sticky;
+  top: 20px;
+
+  &__title {
+    margin-bottom: 50px;
+    font-size: 24px;
+  }
+
+  &__item,
+  &__result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &__result {
+    margin-bottom: 40px;
+  }
+
+  &__item span {
+    font-weight: 800;
+  }
+
+  &__item-price--red {
+    color: #ff3333;
+  }
+
+  &__result span {
+    font-weight: 800;
+    font-size: 20px;
+  }
+
+  &__result-title {
+    font-size: 20px;
+  }
+
+  &__form {
+    margin-bottom: 40px;
+
+    & form {
+      display: flex;
+      gap: 10px;
+    }
+
+    & input {
+      width: 100%;
+      border: none;
+      border-radius: 62px;
+      height: 48px;
+      padding: 0 12px 0 36px;
+      background-color: #F0F0F0;
+      font-size: 16px;
+      transition: box-shadow 0.3s;
+
+      @media (hover: hover) {
+        &:hover {
+          box-shadow: 0 0 2px 1px #000;
+        }
+      }
+
+      &:focus {
+        box-shadow: 0 0 5px 1px #000;
+      }
+    }
+  }
+
+  &__confirm {
+    text-align: center;
+  }
+}

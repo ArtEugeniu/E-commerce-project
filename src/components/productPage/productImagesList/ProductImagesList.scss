@@ -1,0 +1,33 @@
+.details {
+
+
+  &__images-list {
+    margin-right: 14px;
+  }
+
+  &__img {
+    width: 152px;
+    height: 167px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: box-shadow 0.3s, opacity 0.3s;
+
+    @media (hover: hover) {
+      &:hover {
+        box-shadow: 0 0 3px 1px #000;
+      }
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+  }
+
+  &__images-item:not(:last-child) {
+    margin-bottom: 14px;
+  }
+
+  &__active-img {
+    box-shadow: 0 0 5px 2px #000;
+  }
+}
