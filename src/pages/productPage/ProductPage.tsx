@@ -5,17 +5,21 @@ import TestimonialsContainer from "../../containers/testimonialsContainer/Testim
 import RecommendedProductsContainer from "../../containers/recommendedProductsContainer/RecommendedProductsContainer";
 import SubscribeForm from "../../components/forms/subscribeForm/SubscribeForm";
 import Footer from "../../components/layout/footer/Footer";
+import { useRef } from 'react';
+
 
 const ProductPage: React.FC = () => {
+  const subscribeRef = useRef<HTMLDivElement>(null);
+
 
   return (
     <>
-      <Header />
+      <Header onSubscribeClick={() => subscribeRef.current?.scrollIntoView({ behavior: 'smooth' })}/>
       <BreadCrumbs />
       <ProductDetailsContainer />
       <TestimonialsContainer />
       <RecommendedProductsContainer />
-      <div className="subscription-form">
+      <div className="subscription-form" ref={subscribeRef}>
         <SubscribeForm />
       </div>
       <Footer />

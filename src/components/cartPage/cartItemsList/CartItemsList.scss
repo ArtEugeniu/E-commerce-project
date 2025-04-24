@@ -3,5 +3,13 @@
   padding: 20px 24px;
   border-radius: 20px;
   width: 60%;
-}
+  max-height: 750px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: scroll;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

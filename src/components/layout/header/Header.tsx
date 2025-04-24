@@ -1,14 +1,18 @@
 import './Header.scss';
 import Nav from '../nav/Nav';
 
-const Header: React.FC = () => {
+interface IHeaderProps {
+  onSubscribeClick: () => void
+}
+
+const Header: React.FC<IHeaderProps> = ({ onSubscribeClick }) => {
 
   return (
     <header className="header">
       <div className="container">
         <div className="header__inner">
-          
-          <Nav />
+
+          <Nav onSubscribeClick={onSubscribeClick}/>
         </div>
       </div>
     </header>

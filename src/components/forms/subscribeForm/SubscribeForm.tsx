@@ -8,7 +8,7 @@ const SubscribeForm: React.FC = () => {
   }
 
   return (
-    <div className="subscription">
+    <div className="subscription" id="subscribe">
       <div className="container">
         <div className="subscription__container">
           <h2 className="subscription__title">STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>

@@ -9,7 +9,7 @@ interface ICartCalculatorProps {
 
 const CartCalculator: React.FC<ICartCalculatorProps> = ({ data, result }) => {
 
-  const calculatorTitles = Object.keys(data) as (keyof ICalculatorData)[];
+  const calculatorTitles = Object.keys(data);
 
   return (
     <div className="cartCalculator">
@@ -19,7 +19,9 @@ const CartCalculator: React.FC<ICartCalculatorProps> = ({ data, result }) => {
           return (
             <li className="cartCalculator__item" key={item}>
               <h4 className="cartCalculator__item-title">{item}</h4>
-              <span className="cartCalculator__item-price">${data[item]}</span>
+              <span className={`cartCalculator__item-price ${item.toString().includes('Discount') ? 'cartCalculator__item-price--procent' : ''}`}>
+                {item.toString().includes('Discount') ? `-$${data[item]}` : `$${data[item]}`}
+              </span>
             </li>
           )
         })}
@@ -33,9 +35,9 @@ const CartCalculator: React.FC<ICartCalculatorProps> = ({ data, result }) => {
       <div className="cartCalculator__form">
         <form action="">
           <label htmlFor="">
-            <input type="text" placeholder="Add promo code"/>
+            <input type="text" placeholder="Add promo code" />
           </label>
-          <Button type="secondary" text="Apply" htmlType="submit" className="promoCode"/>
+          <Button type="secondary" text="Apply" htmlType="submit" className="promoCode" />
         </form>
       </div>
       <div className="cartCalculator__confirm">

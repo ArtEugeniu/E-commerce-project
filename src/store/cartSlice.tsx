@@ -30,9 +30,19 @@ export const CartSlice = createSlice({
   reducers: {
     addItem: (state, action: PayloadAction<ICartItem>) => {
       const id = action.payload.id;
-      const checkId = state.find(item => item.id === id);
-      if (checkId) return;
-      return [...state, action.payload];
+      const existingItemIndex = state.findIndex(item => item.id === id);
+
+      if (existingItemIndex !== -1) {
+        const existingItem = state[existingItemIndex];
+
+        if (existingItem.quantity === action.payload.quantity &&
+          existingItem.size == action.payload.size
+        ) return;
+
+        state[existingItemIndex] = action.payload;
+      } else {
+        state.push(action.payload);
+      }
     },
 
     deleteItem: (state, action: PayloadAction<number>) => {
