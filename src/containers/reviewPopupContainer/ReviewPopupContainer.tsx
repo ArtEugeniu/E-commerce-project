@@ -39,10 +39,10 @@ const ReviewPopupContainer: React.FC<IReviewPopupContainerProps> = ({ onAddRevie
 
     if (!isOpen) {
       document.body.classList.remove('popup-open');
-      popup.current!.style.transform = 'translateX(-200%)';
+      popupEl.style.transform = 'translateX(-200%)';
     } else {
       document.body.classList.add('popup-open');
-      popup.current!.style.transform = 'translateY(0)';
+      popupEl.style.transform = 'translateY(0)';
     }
   }, [isOpen])
 

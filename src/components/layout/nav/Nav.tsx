@@ -6,9 +6,13 @@ import { useAppSelector } from '../../../hooks/rtkHooks';
 
 interface INavProps {
   onSubscribeClick: () => void
+  search: string
+  setSearch: (value: string) => void
+  onSearchDelete: () => void
+  onToggleAuth: () => void
 }
 
-const Nav: React.FC<INavProps> = ({ onSubscribeClick }) => {
+const Nav: React.FC<INavProps> = ({ onSubscribeClick, search, setSearch, onSearchDelete, onToggleAuth }) => {
   const cartLength = useAppSelector(store => store.cart.length)
   const navItems = [
     {
@@ -22,11 +26,16 @@ const Nav: React.FC<INavProps> = ({ onSubscribeClick }) => {
   ];
 
   const shopList = [
-    {title: 'Women', path: '/category?category=Women'},
-    {title: 'Men', path: '/category?category=Men'},
-    {title: 'Women Gym', path: '/category?category=Women Gym'},
-    {title: 'Men Gym', path: '/category?category=Men Gym'}
+    { title: 'Women', path: '/category?category=Women' },
+    { title: 'Men', path: '/category?category=Men' },
+    { title: 'Women Gym', path: '/category?category=Women Gym' },
+    { title: 'Men Gym', path: '/category?category=Men Gym' }
   ]
+
+  const handleAuthButtonClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onToggleAuth();
+  };
 
   return (
     <nav className="header__nav">
@@ -44,7 +53,7 @@ const Nav: React.FC<INavProps> = ({ onSubscribeClick }) => {
               {shopList.map((item, index) => {
                 return (
                   <li className="popup-item" key={item.title + index}>
-                    <Link style={{display: 'block', width: '100%', padding: '6px'}} to={item.path}>{item.title}</Link>
+                    <Link style={{ display: 'block', width: '100%', padding: '6px' }} to={item.path}>{item.title}</Link>
                   </li>
                 )
               })}
@@ -55,7 +64,8 @@ const Nav: React.FC<INavProps> = ({ onSubscribeClick }) => {
         <li className="header__item" onClick={onSubscribeClick} key='subscribe'>Subscribe Now</li>
       </ul>
       <form className="header__search-form" action="">
-        <input className="header__input" type="text" placeholder="Search for products..." />
+        <input className="header__input" type="text" placeholder="Search for products..." value={search} onChange={(e) => setSearch(e.target.value)} />
+        <button className='header__delete-search' onClick={onSearchDelete}></button>
       </form>
       <ul className="header__list">
         <li className="header__item-cart">
@@ -65,7 +75,9 @@ const Nav: React.FC<INavProps> = ({ onSubscribeClick }) => {
           </Link>
         </li>
         <li className="header__item-account">
-          <img src={userIcon} alt="authorisation" />
+          <button onClick={handleAuthButtonClick}>
+            <img src={userIcon} alt="authorisation" />
+          </button>
         </li>
       </ul>
     </nav>

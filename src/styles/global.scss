@@ -17,6 +17,7 @@ body {
   background-color: #fff;
   font-family: 'Satoshi', sans-serif;
   font-size: 16px;
+  position: relative;
 
   &.popup-open {
     overflow-y: hidden;
