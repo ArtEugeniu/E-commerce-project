@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { asosApi } from "../services/productsApi";
 import CartReducer from "./cartSlice";
+import AuthSlice from './authSlice';
 
 
 export const store = configureStore({
   reducer: {
     [asosApi.reducerPath]: asosApi.reducer,
-    cart: CartReducer
+    cart: CartReducer,
+    auth: AuthSlice
   },
   middleware: (getDefaultMIddleware) =>
     getDefaultMIddleware().concat(asosApi.middleware)

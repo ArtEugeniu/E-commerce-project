@@ -3,19 +3,25 @@ import Nav from '../nav/Nav';
 import { useState, useRef, useEffect } from 'react';
 import { useAllProducts } from '../../../hooks/useAllProducts';
 import { useNavigateToProduct } from '../../../hooks/useNavigateToProduct';
+import { useAppSelector, useAppDispatch } from '../../../hooks/rtkHooks';
+import { clearUser } from '../../../store/authSlice';
+import { auth } from '../../../services/firebaseConfig';
 
 interface IHeaderProps {
   onSubscribeClick: () => void
   onLogClick: () => void
+  onSignClick: () => void
 }
 
-const Header: React.FC<IHeaderProps> = ({ onSubscribeClick, onLogClick }) => {
+const Header: React.FC<IHeaderProps> = ({ onSubscribeClick, onLogClick, onSignClick }) => {
 
   const [search, setSearch] = useState<string>('');
   const [openAuth, setOpenAuth] = useState<boolean>(false);
   const authDiv = useRef<HTMLDivElement | null>(null);
   const allProducts = useAllProducts();
   const navigate = useNavigateToProduct();
+  const user = useAppSelector(store => store.auth.user);
+  const dispatch = useAppDispatch();
 
   const foundProducts = allProducts.filter(item => {
     if (search !== '') {
@@ -42,6 +48,16 @@ const Header: React.FC<IHeaderProps> = ({ onSubscribeClick, onLogClick }) => {
 
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
+
+  const handleLogOut = async () => {
+    try {
+      await auth.signOut();  
+      dispatch(clearUser()); 
+      console.log('User logged out:', user);
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  }
 
   return (
     <header className="header">
@@ -71,12 +87,24 @@ const Header: React.FC<IHeaderProps> = ({ onSubscribeClick, onLogClick }) => {
           </div>
           <div className={`header__sign-buttons ${openAuth ? 'header__sign-buttons--open' : ''}`} ref={authDiv}>
             <ul className="header__sign-list">
-              <li className="header__sign-item">
-                <button className="header__log-button" onClick={onLogClick}>Log In</button>
-              </li>
-              <li className="header__sign-item">
-                <button className="header__log-button" onClick={onLogClick}>Sign Up</button>
-              </li>
+
+              {user ? (
+                <>
+                  <li>{user.email}</li>
+                  <li>
+                    <button className="header__log-button" onClick={handleLogOut}>Log Out</button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="header__sign-item">
+                    <button className="header__log-button" onClick={onLogClick}>Log In</button>
+                  </li>
+                  <li className="header__sign-item">
+                    <button className="header__log-button" onClick={onSignClick}>Sign Up</button>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

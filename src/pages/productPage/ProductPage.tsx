@@ -12,34 +12,40 @@ import { useRef, useState, useEffect } from 'react';
 
 const ProductPage: React.FC = () => {
 
-  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
+  const [isLogInOpen, setIsLogInOpen] = useState<boolean>(false);
+  const [isSignUpOpen, setIsSignUpOpen] = useState<boolean>(false);
 
   const subscribeRef = useRef<HTMLDivElement>(null);
 
   const handleLogIn = () => {
-    setIsPopupOpen(prev => !prev)
+    setIsLogInOpen(prev => !prev)
+  }
+
+  const handleSignUp = () => {
+    setIsSignUpOpen(prev => !prev)
   }
 
   useEffect(() => {
-    if (isPopupOpen) {
+    if (isLogInOpen || isSignUpOpen) {
       document.body.classList.add('popup-open')
     } else {
       document.body.classList.remove('popup-open')
     }
-  })
+  }, [isLogInOpen, isSignUpOpen])
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
-      setIsPopupOpen(false);
+      setIsLogInOpen(false);
+      setIsSignUpOpen(false);
     }
   }
 
 
   return (
     <>
-      <LogInPopup isPopupOpen={isPopupOpen} setIsPopupOpen={setIsPopupOpen} onOverlayClick={handleOverlayClick} />
-      <SignUpPopup isPopupOpen={isPopupOpen} onOverlayClick={handleOverlayClick} setIsPopupOpen={setIsPopupOpen} />
-      <Header onSubscribeClick={() => subscribeRef.current?.scrollIntoView({ behavior: 'smooth' })} onLogClick={handleLogIn} />
+      <LogInPopup isPopupOpen={isLogInOpen} setIsPopupOpen={setIsLogInOpen} onOverlayClick={handleOverlayClick} />
+      <SignUpPopup isPopupOpen={isSignUpOpen} onOverlayClick={handleOverlayClick} setIsPopupOpen={setIsSignUpOpen}/>
+      <Header onSubscribeClick={() => subscribeRef.current?.scrollIntoView({ behavior: 'smooth' })} onLogClick={handleLogIn} onSignClick={handleSignUp}/>
       <BreadCrumbs />
       <ProductDetailsContainer />
       <TestimonialsContainer />

@@ -5,9 +5,27 @@ import CategoryPage from "../../pages/categoryPage/CategoryPage";
 import CartPage from "../../pages/cartPage/CartPage";
 import { SortProvider } from "../../context/sortContext";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
+import { useAppDispatch } from "../../hooks/rtkHooks";
+import { setUser, clearUser } from "../../store/authSlice";
+import { auth } from "../../services/firebaseConfig";
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect } from 'react';
 
 function App() {
 
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(setUser({ uid: user.uid, email: user.email }));
+      } else {
+        dispatch(clearUser());
+      }
+    });
+
+    return () => unsubscribe();
+  }, [dispatch]);
 
   return (
     <SortProvider>
